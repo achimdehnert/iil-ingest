@@ -1,0 +1,18 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: iil-ingest
+  description: Reusable Document Ingestion Package — extract, classify, structure (ADR-170)
+  annotations:
+    github.com/project-slug: achimdehnert/iil-ingest
+  tags:
+    - python
+    - library
+    - document-processing
+    - tier-3
+spec:
+  type: library
+  lifecycle: experimental
+  owner: achimdehnert
+  dependsOn:
+    - component:iil-enrichment
