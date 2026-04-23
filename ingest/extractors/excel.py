@@ -20,7 +20,7 @@ class ExcelExtractor:
     def extract(self, data: bytes) -> ExtractedContent:
         try:
             import openpyxl  # type: ignore[import]
-        except ImportError as exc:
+        except ImportError as exc:  # pragma: no cover
             raise ImportError(
                 "openpyxl required. Install with: pip install iil-ingest[excel]"
             ) from exc

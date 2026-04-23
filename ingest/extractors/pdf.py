@@ -17,7 +17,7 @@ class PDFExtractor:
     def extract(self, data: bytes) -> ExtractedContent:
         try:
             import pdfplumber  # type: ignore[import]
-        except ImportError as exc:
+        except ImportError as exc:  # pragma: no cover
             raise ImportError(
                 "pdfplumber required. Install with: pip install iil-ingest[pdf]"
             ) from exc

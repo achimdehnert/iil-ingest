@@ -19,7 +19,7 @@ class DOCXExtractor:
     def extract(self, data: bytes) -> ExtractedContent:
         try:
             import docx  # type: ignore[import]
-        except ImportError as exc:
+        except ImportError as exc:  # pragma: no cover
             raise ImportError(
                 "python-docx required. Install with: pip install iil-ingest[docx]"
             ) from exc

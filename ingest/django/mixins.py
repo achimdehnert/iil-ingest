@@ -22,7 +22,7 @@ class IngestMixin:
         doc_obj.ingest_file(pipeline=my_pipeline)
     """
 
-    def ingest_file(self, pipeline: Any, file_field: str = "file") -> "IngestedDocument":
+    def ingest_file(self, pipeline: Any, file_field: str = "file") -> IngestedDocument:
         file_obj = getattr(self, file_field)
         data = file_obj.read()
         filename = getattr(file_obj, "name", "")
