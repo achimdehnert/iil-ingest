@@ -9,8 +9,18 @@ description = "Reusable Document Ingestion Package for IIL Platform (ADR-170)"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
-authors = [{ name = "Achim Dehnert" }]
-keywords = ["document", "ingestion", "pdf", "classifier", "iil"]
+authors = [{ name = "Achim Dehnert", email = "achim@dehnert.dev" }]
+keywords = ["document", "ingestion", "pdf", "classifier", "iil", "iil-platform"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing",
+    "Typing :: Typed",
+]
 dependencies = []
 
 [project.optional-dependencies]
@@ -28,6 +38,11 @@ dev   = [
     "openpyxl>=3.1",
     "pytesseract>=0.3",
 ]
+
+[project.urls]
+Homepage = "https://github.com/achimdehnert/iil-ingest"
+Repository = "https://github.com/achimdehnert/iil-ingest"
+Issues = "https://github.com/achimdehnert/iil-ingest/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["ingest"]
