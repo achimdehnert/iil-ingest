@@ -117,8 +117,9 @@ def test_ocr_pdf_bytes_returns_text():
     tess = _make_pytesseract_mock(["Seite 1", "Seite 2"])
 
     with patch.dict(sys.modules, {"pdf2image": p2i, "pytesseract": tess}):
-        from ingest.extractors import ocr as ocr_mod
         import importlib
+
+        from ingest.extractors import ocr as ocr_mod
         importlib.reload(ocr_mod)
         result = ocr_mod.ocr_pdf_bytes(b"fake-pdf")
 
@@ -132,8 +133,9 @@ def test_ocr_pdf_bytes_skips_empty_pages():
     tess = _make_pytesseract_mock(["  \n  ", "Inhalt"])
 
     with patch.dict(sys.modules, {"pdf2image": p2i, "pytesseract": tess}):
-        from ingest.extractors import ocr as ocr_mod
         import importlib
+
+        from ingest.extractors import ocr as ocr_mod
         importlib.reload(ocr_mod)
         result = ocr_mod.ocr_pdf_bytes(b"fake-pdf")
 
@@ -147,8 +149,9 @@ def test_ocr_pdf_bytes_returns_empty_on_conversion_error():
     tess = MagicMock(spec=ModuleType)
 
     with patch.dict(sys.modules, {"pdf2image": p2i, "pytesseract": tess}):
-        from ingest.extractors import ocr as ocr_mod
         import importlib
+
+        from ingest.extractors import ocr as ocr_mod
         importlib.reload(ocr_mod)
         result = ocr_mod.ocr_pdf_bytes(b"bad-pdf")
 
@@ -162,8 +165,9 @@ def test_ocr_pdf_bytes_custom_lang():
     tess = _make_pytesseract_mock("text")
 
     with patch.dict(sys.modules, {"pdf2image": p2i, "pytesseract": tess}):
-        from ingest.extractors import ocr as ocr_mod
         import importlib
+
+        from ingest.extractors import ocr as ocr_mod
         importlib.reload(ocr_mod)
         ocr_mod.ocr_pdf_bytes(b"pdf", lang="eng")
 
