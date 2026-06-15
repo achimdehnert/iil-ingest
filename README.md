@@ -82,6 +82,20 @@ bytes + filename
   -> IngestedDocument
 ```
 
+## Ecosystem
+
+`iil-ingest` ist die **Extraktions-Stufe** einer dreiteiligen Datenpipeline:
+
+```
+iil-ingest  →  iil-enrichment  →  iil-fieldprefill
+(extract)      (enrich)           (prefill form fields)
+```
+
+`IngestedDocument.content.text` dient als Eingang für die Anreicherung (z. B. CAS-Nummer
+extrahieren → `iil-enrichment`). Vollständiger Flow, reale Typen und ein lauffähiges
+End-to-End-Beispiel:
+**[platform/docs/ecosystem/iil-data-pipeline.md](https://github.com/achimdehnert/platform/blob/main/docs/ecosystem/iil-data-pipeline.md)**.
+
 ## References
 
 - ADR-170: `platform/docs/adr/ADR-170-iil-ingest-document-ingestion-package.md`
