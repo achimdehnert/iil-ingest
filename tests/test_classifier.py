@@ -1,4 +1,5 @@
 """Tests for ingest.classifier.ProfileClassifier."""
+
 from dataclasses import dataclass
 
 import pytest

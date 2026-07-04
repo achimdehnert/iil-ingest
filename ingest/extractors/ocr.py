@@ -6,6 +6,7 @@ Requires the [ocr] extra:
 System dependencies (must be installed separately):
     apt install tesseract-ocr tesseract-ocr-deu tesseract-ocr-eng poppler-utils
 """
+
 from __future__ import annotations
 
 import logging

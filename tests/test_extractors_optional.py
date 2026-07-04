@@ -1,4 +1,5 @@
 """Tests for optional-dependency extractors (pdfplumber, openpyxl in dev deps)."""
+
 from __future__ import annotations
 
 import io
@@ -8,6 +9,7 @@ import pytest
 # ---------------------------------------------------------------------------
 # Excel extractor (openpyxl is in dev deps)
 # ---------------------------------------------------------------------------
+
 
 def _make_xlsx(rows: list[list]) -> bytes:
     openpyxl = pytest.importorskip("openpyxl")
@@ -22,6 +24,7 @@ def _make_xlsx(rows: list[list]) -> bytes:
 
 def test_excel_can_handle():
     from ingest.extractors.excel import ExcelExtractor
+
     ext = ExcelExtractor()
     assert ext.can_handle("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
     assert not ext.can_handle("text/csv")
@@ -29,6 +32,7 @@ def test_excel_can_handle():
 
 def test_excel_basic_extraction():
     from ingest.extractors.excel import ExcelExtractor
+
     data = _make_xlsx([["Rechnung", "Nr", "001"], ["MwSt.", "19%", ""]])
     result = ExcelExtractor().extract(data)
     assert "Rechnung" in result.text
@@ -39,6 +43,7 @@ def test_excel_basic_extraction():
 
 def test_excel_metadata_sheet_names():
     from ingest.extractors.excel import ExcelExtractor
+
     data = _make_xlsx([["col1", "col2"]])
     result = ExcelExtractor().extract(data)
     assert "sheet_names" in result.metadata
@@ -47,6 +52,7 @@ def test_excel_metadata_sheet_names():
 
 def test_excel_corrupt_data():
     from ingest.extractors.excel import ExcelExtractor
+
     result = ExcelExtractor().extract(b"not an excel file")
     assert len(result.extraction_errors) > 0
 
@@ -55,8 +61,10 @@ def test_excel_corrupt_data():
 # PDF extractor (pdfplumber is in dev deps)
 # ---------------------------------------------------------------------------
 
+
 def test_pdf_can_handle():
     from ingest.extractors.pdf import PDFExtractor
+
     ext = PDFExtractor()
     assert ext.can_handle("application/pdf")
     assert not ext.can_handle("text/csv")
@@ -64,6 +72,7 @@ def test_pdf_can_handle():
 
 def test_pdf_corrupt_returns_error():
     from ingest.extractors.pdf import PDFExtractor
+
     result = PDFExtractor().extract(b"not a real pdf")
     assert len(result.extraction_errors) > 0
     assert result.mime_type == "application/pdf"
@@ -73,6 +82,7 @@ def test_pdf_corrupt_returns_error():
 def test_pdf_extract_returns_extracted_content():
     from ingest.extractors.pdf import PDFExtractor
     from ingest.types import ExtractedContent
+
     result = PDFExtractor().extract(b"%PDF-invalid")
     assert isinstance(result, ExtractedContent)
 
@@ -81,12 +91,12 @@ def test_pdf_extract_returns_extracted_content():
 # DOCX extractor — can_handle only (python-docx not in dev deps)
 # ---------------------------------------------------------------------------
 
+
 def test_docx_can_handle():
     from ingest.extractors.docx import DOCXExtractor
+
     ext = DOCXExtractor()
-    assert ext.can_handle(
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-    )
+    assert ext.can_handle("application/vnd.openxmlformats-officedocument.wordprocessingml.document")
     assert not ext.can_handle("application/pdf")
 
 

@@ -1,4 +1,5 @@
 """German HR document classification profiles (migrated from dms-hub)."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass

@@ -1,4 +1,5 @@
 """Tests for IngestRegistry."""
+
 from dataclasses import dataclass
 
 from ingest.extractors.csv import CSVExtractor

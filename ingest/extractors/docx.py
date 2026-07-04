@@ -1,11 +1,14 @@
 """DOCX extractor using python-docx."""
+
 from __future__ import annotations
 
 from ingest.types import ExtractedContent
 
-SUPPORTED_MIMES: frozenset[str] = frozenset({
-    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-})
+SUPPORTED_MIMES: frozenset[str] = frozenset(
+    {
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    }
+)
 
 
 class DOCXExtractor:

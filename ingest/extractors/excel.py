@@ -1,12 +1,15 @@
 """Excel extractor using openpyxl."""
+
 from __future__ import annotations
 
 from ingest.types import ExtractedContent
 
-SUPPORTED_MIMES: frozenset[str] = frozenset({
-    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    "application/vnd.ms-excel",
-})
+SUPPORTED_MIMES: frozenset[str] = frozenset(
+    {
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "application/vnd.ms-excel",
+    }
+)
 
 
 class ExcelExtractor:

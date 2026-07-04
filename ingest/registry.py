@@ -1,4 +1,5 @@
 """Central registry for extractors and classifier profiles."""
+
 from __future__ import annotations
 
 from ingest.classifier import ClassifierProfile, ProfileClassifier

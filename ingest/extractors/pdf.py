@@ -1,4 +1,5 @@
 """PDF extractor using pdfplumber with optional Tesseract OCR fallback."""
+
 from __future__ import annotations
 
 from ingest.types import ExtractedContent
@@ -40,18 +41,16 @@ class PDFExtractor:
         try:
             with pdfplumber.open(io.BytesIO(data)) as pdf:
                 meta = {
-                    "title":   pdf.metadata.get("Title", ""),
-                    "author":  pdf.metadata.get("Author", ""),
+                    "title": pdf.metadata.get("Title", ""),
+                    "author": pdf.metadata.get("Author", ""),
                     "creator": pdf.metadata.get("Creator", ""),
-                    "pages":   len(pdf.pages),
+                    "pages": len(pdf.pages),
                 }
                 for i, page in enumerate(pdf.pages):
                     try:
                         text_parts.append(page.extract_text() or "")
                         for tbl in page.extract_tables() or []:
-                            tables.append(
-                                [[str(cell or "") for cell in row] for row in tbl]
-                            )
+                            tables.append([[str(cell or "") for cell in row] for row in tbl])
                     except Exception as exc:  # noqa: BLE001
                         errors.append(f"Page {i}: {exc}")
         except Exception as exc:  # noqa: BLE001
