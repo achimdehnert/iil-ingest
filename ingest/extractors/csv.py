@@ -1,4 +1,5 @@
 """CSV extractor (stdlib only -- no extra dependency)."""
+
 from __future__ import annotations
 
 import csv

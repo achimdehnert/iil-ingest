@@ -1,4 +1,5 @@
 """MIME type detection from magic bytes + filename extension."""
+
 from __future__ import annotations
 
 import os
@@ -10,15 +11,15 @@ _MAGIC: list[tuple[bytes, str]] = [
 ]
 
 _EXT_MIME: dict[str, str] = {
-    ".pdf":  "application/pdf",
+    ".pdf": "application/pdf",
     ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    ".xls":  "application/vnd.ms-excel",
-    ".csv":  "text/csv",
+    ".xls": "application/vnd.ms-excel",
+    ".csv": "text/csv",
     ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    ".doc":  "application/msword",
-    ".txt":  "text/plain",
+    ".doc": "application/msword",
+    ".txt": "text/plain",
     ".html": "text/html",
-    ".htm":  "text/html",
+    ".htm": "text/html",
 }
 
 

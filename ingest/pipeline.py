@@ -1,4 +1,5 @@
 """IngestPipeline: detect -> extract -> classify."""
+
 from __future__ import annotations
 
 from ingest.classifier import ProfileClassifier

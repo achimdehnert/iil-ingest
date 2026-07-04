@@ -1,4 +1,5 @@
 """Tests for IngestPipeline."""
+
 from dataclasses import dataclass
 
 from ingest.classifier import ProfileClassifier

@@ -1,4 +1,5 @@
 """Tests for CSVExtractor."""
+
 from ingest.extractors.csv import CSVExtractor
 
 

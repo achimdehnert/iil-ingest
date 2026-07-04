@@ -1,4 +1,5 @@
 """Tests for ingest.django.mixins.IngestMixin."""
+
 from __future__ import annotations
 
 import io
@@ -24,6 +25,7 @@ def _pipeline():
 
 def test_ingest_file_returns_ingested_document():
     from ingest.types import IngestedDocument
+
     model = _FakeModel(b"a,b\n1,2")
     result = model.ingest_file(_pipeline())
     assert isinstance(result, IngestedDocument)

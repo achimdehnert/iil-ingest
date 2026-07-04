@@ -1,4 +1,5 @@
 """Tests for OCR extractor and PDFExtractor.ocr_fallback."""
+
 from __future__ import annotations
 
 import sys
@@ -27,6 +28,7 @@ def _make_pytesseract_mock(side_effects) -> ModuleType:
 
 # ── PDFExtractor: ocr_fallback disabled (default) ────────────────────────────
 
+
 def test_pdf_extractor_default_no_ocr():
     """ocr_fallback defaults to False."""
     extractor = PDFExtractor()
@@ -40,6 +42,7 @@ def test_pdf_extractor_ocr_fallback_flag():
 
 
 # ── PDFExtractor: OCR not called when pdfplumber returns text ─────────────────
+
 
 def test_pdf_extractor_no_ocr_when_text_present():
     """If pdfplumber returns text, OCR must NOT be triggered."""
@@ -62,6 +65,7 @@ def test_pdf_extractor_no_ocr_when_text_present():
 
 
 # ── PDFExtractor: OCR triggered when pdfplumber returns empty text ─────────────
+
 
 def test_pdf_extractor_ocr_fallback_triggered():
     """If pdfplumber returns empty text and ocr_fallback=True, OCR is called."""
@@ -110,6 +114,7 @@ def test_pdf_extractor_ocr_not_called_when_fallback_disabled():
 
 # ── ocr_pdf_bytes: unit tests (sys.modules mocks — no system install needed) ──
 
+
 def test_ocr_pdf_bytes_returns_text():
     """ocr_pdf_bytes returns joined page texts from pytesseract."""
     fake_image = MagicMock()
@@ -120,6 +125,7 @@ def test_ocr_pdf_bytes_returns_text():
         import importlib
 
         from ingest.extractors import ocr as ocr_mod
+
         importlib.reload(ocr_mod)
         result = ocr_mod.ocr_pdf_bytes(b"fake-pdf")
 
@@ -136,6 +142,7 @@ def test_ocr_pdf_bytes_skips_empty_pages():
         import importlib
 
         from ingest.extractors import ocr as ocr_mod
+
         importlib.reload(ocr_mod)
         result = ocr_mod.ocr_pdf_bytes(b"fake-pdf")
 
@@ -152,6 +159,7 @@ def test_ocr_pdf_bytes_returns_empty_on_conversion_error():
         import importlib
 
         from ingest.extractors import ocr as ocr_mod
+
         importlib.reload(ocr_mod)
         result = ocr_mod.ocr_pdf_bytes(b"bad-pdf")
 
@@ -168,6 +176,7 @@ def test_ocr_pdf_bytes_custom_lang():
         import importlib
 
         from ingest.extractors import ocr as ocr_mod
+
         importlib.reload(ocr_mod)
         ocr_mod.ocr_pdf_bytes(b"pdf", lang="eng")
 

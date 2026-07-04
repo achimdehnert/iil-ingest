@@ -1,4 +1,5 @@
 """Tests for german_hr profiles."""
+
 from ingest.classifier import ProfileClassifier
 from ingest.profiles.german_hr import GERMAN_HR_PROFILES
 

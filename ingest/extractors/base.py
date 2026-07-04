@@ -1,4 +1,5 @@
 """ExtractorProtocol -- base interface for all extractors."""
+
 from __future__ import annotations
 
 from typing import Protocol, runtime_checkable

@@ -1,4 +1,5 @@
 """iil-ingest -- Reusable Document Ingestion Package (ADR-170)."""
+
 from __future__ import annotations
 
 from ingest.classifier import ProfileClassifier

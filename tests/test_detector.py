@@ -1,4 +1,5 @@
 """Tests for ingest.detector."""
+
 from ingest.detector import detect_mime
 
 
